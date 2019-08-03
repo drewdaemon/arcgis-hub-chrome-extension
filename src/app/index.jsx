@@ -8,6 +8,10 @@ class App extends Component {
         this.state.loggedIn = false; // TODO check
     }
 
+    componentDidMount() {
+        document.querySelector('.loader').style.display = 'none';
+    }
+
     onLogin() {
         this.setState({loggedIn: true});
     }

@@ -3,4 +3,6 @@ import { h, render } from 'preact';
 import App from './app';
 
 Intl.init();
-render(<App />, document.body);
+setTimeout(() => {
+  render(<App />, document.getElementById('popup-container'));
+}, 1000);
