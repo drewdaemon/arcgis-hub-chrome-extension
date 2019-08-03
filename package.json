@@ -1,0 +1,26 @@
+{
+  "name": "arcgis-hub-chrome-extension",
+  "version": "1.0.0",
+  "description": "Provides in-browser tools for initiative managers.",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run clean:dist && webpack --config webpack.conf.js --display-error-details && npm run copy:assets",
+    "clean:dist": "rm -rf dist/",
+    "copy:assets": "cp manifest.json ./src/popup.html ./dist/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrew Tate (atate@esri.com)",
+  "license": "ISC",
+  "dependencies": {
+    "pocket-i18n": "^1.0.11",
+    "preact": "^8.5.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "@babel/preset-env": "^7.5.5",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6"
+  }
+}
