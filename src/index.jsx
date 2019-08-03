@@ -1,8 +1,6 @@
 import Intl from './app/intl';
 import { h, render } from 'preact';
-import App from './app';
+import App from './app/app';
 
 Intl.init();
-setTimeout(() => {
-  render(<App />, document.getElementById('popup-container'));
-}, 1000);
+render(<App />, document.body);
