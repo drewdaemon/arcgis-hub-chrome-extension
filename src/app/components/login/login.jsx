@@ -10,8 +10,9 @@ class Login extends Component {
   render(props, state) {
       return (
         <div>
-          <h1>logged out</h1>
-          <button onclick={props.onLogin}></button>
+          <h1 class="font-size-5 avenir-regular">ArcGIS Hub Admin Extension</h1>
+          <p class="font-size-1">Sign in to get started.</p>
+          <button class="btn btn-fill" onclick={props.onLogin}>Sign In</button>
         </div>
       );
   }
