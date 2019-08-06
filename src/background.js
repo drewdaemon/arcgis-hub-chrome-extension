@@ -4,8 +4,8 @@ chrome.runtime.onMessage.addListener(
       chrome.identity.launchWebAuthFlow({
         url: request.uri,
         interactive: true
-      }, resUrl => {
-        // TODO store url
+      }, grantUrl => {
+        chrome.storage.sync.set({grantUrl: grantUrl});
         chrome.browserAction.setBadgeText({text: '1'});
         chrome.browserAction.setBadgeBackgroundColor({color: '#FF0000'})
       });

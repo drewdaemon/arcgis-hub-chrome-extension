@@ -10,6 +10,21 @@ class AuthService {
       authorizationUri: 'https://www.arcgis.com/sharing/oauth2/authorize',
       redirectUri: chrome.identity.getRedirectURL()
     });
+
+  }
+
+  isAuthenticated() {
+    return new Promise(resolve => {
+      chrome.storage.sync.get(['grantUrl'], res => {
+        if (!res.grantUrl) {
+          resolve(null);
+          return;
+        }
+        this.esriAuth.token.getToken(res.grantUrl)
+          .then(user => this.user = user)
+          .then(_ => resolve(this.user));
+      });
+    })
   }
 
   authenticate() {
