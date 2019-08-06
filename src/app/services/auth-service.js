@@ -14,15 +14,11 @@ class AuthService {
 
   authenticate() {
     return new Promise(resolve => {
-      chrome.identity.launchWebAuthFlow({
-        url: this.esriAuth.token.getUri(),
-        interactive: true
-      }, async resUri => {
-        alert(resUri);
-        this.user = await this.esriAuth.token.getToken(resUri);
-        resolve();
+      chrome.runtime.sendMessage({
+        type: 'login',
+        uri: this.esriAuth.token.getUri()
       });
-    });
+    })
   }
 }
 
