@@ -3,6 +3,7 @@ import './app.scss';
 
 import InitiativesList from './components/initiatives-list/initiatives-list';
 import Login from './components/login/login';
+import Loader from './components/loader/loader';
 
 class App extends Component {
     constructor() {
@@ -11,22 +12,21 @@ class App extends Component {
         this.state.loading = true;
     }
 
+    setLoading(loading) {
+        this.setState({loading: loading});
+    }
+
     render(props, state) {
         return (
             <div class="app-container">
-                {state.loading &&
-                    (<div class="loader is-active padding-leader-3 padding-trailer-3">
-                        <div class="loader-bars"></div>
-                        <div class="loader-text">Loading...</div>
-                    </div>)
-                }
                 {state.isLoggedIn ? (
                     <InitiativesList />
                 ) : (
                     <Login
-                        hideLoader={() => this.setState({loading: false})}
+                        setLoading={this.setLoading.bind(this)}
                         onLogin={() => this.setState({loggedIn: true})} />
                 )}
+                {state.loading && <Loader />}
             </div>
         )
     }

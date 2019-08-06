@@ -3,11 +3,11 @@ import translations from './translations.json';
 
 class Intl {
 
-  init() {
+  constructor() {
     const translator = Pocket.load(translations);
     this.t = translator.t;
   }
 
 }
 
-export default new Intl();
+export default Intl;

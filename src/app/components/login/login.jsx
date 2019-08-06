@@ -1,10 +1,18 @@
 import { h, render, Component } from 'preact';
 import './login.scss';
+import Factory from '../../services';
 
 class Login extends Component {
 
   componentDidMount() {
-    this.props.hideLoader();
+    this.props.setLoading(false);
+  }
+
+  async login() {
+    this.props.setLoading(true);
+    this.user = await Factory.auth.authenticate();
+    this.props.setLoading(false);
+    this.props.onLogin();
   }
 
   render(props, state) {
@@ -12,7 +20,7 @@ class Login extends Component {
         <div>
           <h1 class="font-size-5 avenir-regular">ArcGIS Hub Admin Extension</h1>
           <p class="font-size-1">Sign in to get started.</p>
-          <button class="btn btn-fill" onclick={props.onLogin}>Sign In</button>
+          <button class="btn btn-fill" onclick={this.login.bind(this)}>Sign In</button>
         </div>
       );
   }

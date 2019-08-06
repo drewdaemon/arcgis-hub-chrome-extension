@@ -2,7 +2,7 @@ module.exports = {
   mode: 'production',
   entry: {
     background: './src/background.js',
-    index: './src/index.jsx'
+    index: ['babel-polyfill', './src/index.jsx']
   },
   output: {
     filename: '[name].js',
