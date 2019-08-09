@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@esri/arcgis-rest-auth": "^2.3.0",
+    "@esri/arcgis-rest-portal": "^2.3.0",
     "@esri/arcgis-rest-request": "^2.3.0",
     "client-oauth2": "^4.2.5",
     "isomorphic-fetch": "^2.2.1",
