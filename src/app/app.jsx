@@ -16,8 +16,8 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const user = await Factory.auth.isAuthenticated();
-    if (!user) {
+    const session = await Factory.auth.isAuthenticated();
+    if (!session) {
       this.setState({ loggedIn: false });
     } else {
       this.setState({ loggedIn: true });
