@@ -15,6 +15,13 @@ class ServiceFactory {
     }
     return this._intl;
   }
+
+  static get itemService() {
+    if (!this._intl) {
+      this._itemService = new Intl();
+    }
+    return this._intl;
+  }
 }
 
 export default ServiceFactory;
