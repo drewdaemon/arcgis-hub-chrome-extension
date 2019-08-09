@@ -10,7 +10,9 @@ class App extends Component {
   constructor() {
     super()
     this.setLoading = this.setLoading.bind(this);
-    this.state.loading = true;
+    this.state = {
+      loading: true
+    };
   }
 
   async componentDidMount() {
@@ -20,6 +22,7 @@ class App extends Component {
     } else {
       this.setState({ loggedIn: true });
     }
+    this.setLoading(false);
   }
 
   setLoading(loading) {
