@@ -9,7 +9,7 @@ module.exports = {
     path: __dirname + '/dist'
   },
   optimization: {
-		minimize: false
+		minimize: true
   },
   module: {
     rules: [
