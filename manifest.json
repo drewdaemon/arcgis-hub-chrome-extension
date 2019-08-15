@@ -8,7 +8,7 @@
     "identity"
   ],
   "background": {
-    "scripts": ["background.js"],
+    "page": "background.html",
     "persistent": false
   },
   "browser_action": {
@@ -19,6 +19,9 @@
     "16": "img/icon-16.png",
     "48": "img/icon-48.png",
     "128": "img/icon-128.png"
+  },
+  "sandbox": {
+    "pages": ["sandbox.html"]
   },
   "manifest_version": 2
 }

@@ -1,6 +1,7 @@
 import AuthService from './auth-service';
 import Intl from './intl';
 import ItemService from './item-service';
+import SandboxService from './sandbox-service';
 
 class ServiceFactory {
   static get auth() {
@@ -18,10 +19,17 @@ class ServiceFactory {
   }
 
   static get itemService() {
-    if (!this._itemsService) {
+    if (!this._itemService) {
       this._itemService = new ItemService();
     }
     return this._itemService;
+  }
+
+  static get sandboxService() {
+    if (!this._sandboxService) {
+      this._sandboxService = new SandboxService();
+    }
+    return this._sandboxService;
   }
 }
 

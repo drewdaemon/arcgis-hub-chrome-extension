@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run clean:dist && webpack --display-error-details && npm run copy:assets",
     "clean:dist": "rm -rf dist/",
-    "copy:assets": "cp -r manifest.json ./src/popup.html ./src/assets/ ./dist/",
+    "copy:assets": "cp -r manifest.json ./src/popup.html ./src/background.html ./src/sandbox/sandbox.html ./src/assets/ ./dist/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Andrew Tate (atate@esri.com)",

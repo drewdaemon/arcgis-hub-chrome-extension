@@ -3,8 +3,17 @@ import Factory from '../../services';
 
 class InitiativesList extends Component {
 
+  constructor () {
+    super();
+    this.getSiteItems = this.getSiteItems.bind(this);
+  }
+
+  getSiteItems(query) {
+    Factory.itemService.getSiteItems(query)
+        .then(console.log);
+  }
+
   componentDidMount() {
-    Factory.itemService.getSiteItems('tate');
   }
 
   render(props, state) {

@@ -25,7 +25,7 @@ class AuthService {
               username: user.data.username,
               token: user.accessToken,
               tokenExpires: user.expires,
-              clientId: this.esriAuth.clientId
+              clientId: this.esriAuth.options.clientId
             });
             return this.session;
           })

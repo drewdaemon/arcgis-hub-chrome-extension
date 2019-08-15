@@ -4,12 +4,15 @@
     <link rel="stylesheet" href="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/css/calcite-web.min.css">
   </head>
   <body>
-    <div class="app-container">
-      <div class="loader is-active padding-leader-3 padding-trailer-3">
-        <div class="loader-bars" />
-        <div class="loader-text">Loading...</div>
+    <div id="root">
+      <div class="app-container">
+        <div class="loader is-active padding-leader-3 padding-trailer-3">
+          <div class="loader-bars" />
+          <div class="loader-text">Loading...</div>
+        </div>
       </div>
     </div>
+    <iframe id="sandbox" src="./sandbox.html" height="0" width="0"></iframe>
     <script src="./index.js"></script>
   </body>
 </html>

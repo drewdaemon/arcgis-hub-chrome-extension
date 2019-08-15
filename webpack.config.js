@@ -2,6 +2,7 @@ module.exports = {
   mode: 'production',
   entry: {
     background: './src/background.js',
+    sandbox: './src/sandbox/sandbox.js',
     index: ['babel-polyfill', './src/index.jsx']
   },
   output: {
