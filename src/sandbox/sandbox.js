@@ -11,5 +11,5 @@ window.addEventListener('message', function(event) {
   promise.then(result => {
     delete result.nextPage; // Have to remove the nextPage function to toss it back to the app
     event.source.postMessage(result, event.origin);
-  })
+  });
 });

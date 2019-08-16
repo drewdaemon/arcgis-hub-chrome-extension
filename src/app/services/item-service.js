@@ -2,7 +2,7 @@ import Factory from '.';
 
 class ItemService {
 
-  getSiteItems(q) {
+  searchSiteItems(q) {
     return Factory.sandboxService.sendCommand(
       'searchItems', {q});
   }

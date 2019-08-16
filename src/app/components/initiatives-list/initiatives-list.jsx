@@ -5,19 +5,29 @@ class InitiativesList extends Component {
 
   constructor () {
     super();
-    this.getSiteItems = this.getSiteItems.bind(this);
+    this.searchSiteItems = this.searchSiteItems.bind(this);
   }
 
-  getSiteItems(query) {
-    Factory.itemService.getSiteItems(query)
-        .then(console.log);
+  searchSiteItems(query) {
+    return Factory.itemService.searchSiteItems(query)
+        .then(resultsObj => {
+          this.setState({resultsObj});
+        });
   }
 
-  componentDidMount() {
+  comp() {
+    this.searchSiteItems('*');
   }
 
   render(props, state) {
-    return <h1>logged in</h1>
+    return (
+      <div>
+        <h1 onclick={() => this.searchSiteItems('tate')}>logged in</h1>
+        <ul>
+          {this.state.resultsObj && this.state.resultsObj.results.map(item => <li>{item.title}</li>)}
+        </ul>
+      </div>
+    );
   }
 }
 
