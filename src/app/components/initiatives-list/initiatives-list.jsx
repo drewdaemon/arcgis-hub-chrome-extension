@@ -1,5 +1,6 @@
-import { h, Component } from 'preact'
+import { h, Component } from 'preact';
 import Factory from '../../services';
+import SiteListing from './site-listing/site-listing';
 
 class InitiativesList extends Component {
 
@@ -10,15 +11,15 @@ class InitiativesList extends Component {
     this.onInput = this.onInput.bind(this);
   }
 
+  componentDidMount() {
+    this.searchField.focus();
+  }
+
   searchSiteItems(query) {
     return Factory.itemService.searchSiteItems(query)
         .then(resultsObj => {
           this.setState({resultsObj});
         });
-  }
-
-  componentDidMount() {
-    this.searchField.focus();
   }
 
   onInput(e) {
@@ -31,11 +32,10 @@ class InitiativesList extends Component {
     return (
       <div>
         <h1>Hub Sites</h1>
-        <input ref={input => this.searchField = input} value={searchStr} onInput={this.onInput}></input>
-        <ul>
+        <input type='text' placeholder='Search'
+          ref={input => this.searchField = input} value={searchStr} onInput={this.onInput}></input>
           {this.state.resultsObj &&
-            this.state.resultsObj.results.map(item => <li>{item.title}</li>)}
-        </ul>
+            this.state.resultsObj.results.map(item => <SiteListing site={item} />)}
       </div>
     );
   }
