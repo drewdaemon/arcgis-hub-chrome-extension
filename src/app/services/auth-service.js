@@ -1,13 +1,14 @@
 import ClientOAuth2 from 'client-oauth2';
 import { UserSession } from '@esri/arcgis-rest-auth';
+import Env from '@app/env';
 
 class AuthService {
 
   constructor() {
     this.esriAuth = new ClientOAuth2({
       clientId: 'wLynoMNBKOjRSzg2',
-      accessTokenUri: 'https://www.arcgis.com/sharing/rest/portals/self',
-      authorizationUri: 'https://www.arcgis.com/sharing/oauth2/authorize',
+      accessTokenUri: `${Env.portalBase}/sharing/rest/portals/self`,
+      authorizationUri: `${Env.portalBase}/sharing/oauth2/authorize`,
       redirectUri: chrome.identity.getRedirectURL()
     });
   }
