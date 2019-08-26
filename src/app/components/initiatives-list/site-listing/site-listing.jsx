@@ -1,9 +1,17 @@
 import { h } from 'preact';
+import './site-listing.scss';
 
 const SiteListing = ({children, site}) => {
   return (
-    <div>
-      <a href={site.url} target='_blank'>{site.title}</a>
+    <div class='result-item'>
+      <div class='body-container'>
+          <div class='body-title'>
+            <a href={site.url} target='_blank'>{site.title}</a>
+          </div>
+          <div class='body-subtitle'>
+            {site.owner} | Created: {new Date(site.created).toISOString().slice(0, 10)}
+          </div>
+      </div>
     </div>
   );
 };
