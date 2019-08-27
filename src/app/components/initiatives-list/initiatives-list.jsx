@@ -2,6 +2,8 @@ import { h, Component } from 'preact';
 import Factory from '../../services';
 import SiteListing from './site-listing/site-listing';
 
+import './initiatives-list.scss';
+
 const UP_KEY = 38;
 const DOWN_KEY = 40;
 const ENTER_KEY = 13;
@@ -10,7 +12,7 @@ class InitiativesList extends Component {
 
   constructor () {
     super();
-    this.state = { searchStr: '', selectedSiteIndex: '' };
+    this.state = { searchStr: '', selectedSiteIndex: 0, resultsObj: null };
     this.searchSiteItems = this.searchSiteItems.bind(this);
     this.onInput = this.onInput.bind(this);
     this.handleKeyEvent = this.handleKeyEvent.bind(this);
@@ -62,8 +64,11 @@ class InitiativesList extends Component {
         <input type='text' placeholder='Search'
           ref={input => this.searchField = input} value={searchStr} onInput={this.onInput}></input>
           {resultsObj &&
-            resultsObj.results.map((item, i) =>
-              <SiteListing site={item} selected={i === selectedSiteIndex} />)}
+            <div class='scroll-box'>
+                {resultsObj.results.map((item, i) =>
+                  <SiteListing site={item} selected={i === selectedSiteIndex} />)}
+            </div>
+          }
       </div>
     );
   }
