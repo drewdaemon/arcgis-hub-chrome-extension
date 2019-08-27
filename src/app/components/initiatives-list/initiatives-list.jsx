@@ -13,30 +13,31 @@ class InitiativesList extends Component {
     this.state = { searchStr: '', selectedSiteIndex: '' };
     this.searchSiteItems = this.searchSiteItems.bind(this);
     this.onInput = this.onInput.bind(this);
+    this.handleKeyEvent = this.handleKeyEvent.bind(this);
   }
-
 
   componentDidMount() {
     this.searchField.focus();
+    window.addEventListener('keydown', this.handleKeyEvent, false);
+  }
 
-    window.addEventListener('keydown', ev => {
-      const selectedSiteIndex = this.state.selectedSiteIndex;
+  handleKeyEvent(ev) {
+    const selectedSiteIndex = this.state.selectedSiteIndex;
 
-      switch (ev.keyCode) {
-        case UP_KEY:
-          if (selectedSiteIndex > 0) {
-            this.setState({selectedSiteIndex: selectedSiteIndex - 1})
-          }
-          break;
-        case DOWN_KEY:
-          if (selectedSiteIndex < this.state.resultsObj.results.length - 1) {
-            this.setState({selectedSiteIndex: selectedSiteIndex + 1})
-          }
-          break;
-        case ENTER_KEY:
-          chrome.tabs.create({ url: this.state.resultsObj.results[selectedSiteIndex].url });
-      }
-    }, false);
+    switch (ev.keyCode) {
+      case UP_KEY:
+        if (selectedSiteIndex > 0) {
+          this.setState({selectedSiteIndex: selectedSiteIndex - 1})
+        }
+        break;
+      case DOWN_KEY:
+        if (selectedSiteIndex < this.state.resultsObj.results.length - 1) {
+          this.setState({selectedSiteIndex: selectedSiteIndex + 1})
+        }
+        break;
+      case ENTER_KEY:
+        chrome.tabs.create({ url: this.state.resultsObj.results[selectedSiteIndex].url });
+    }
   }
 
   searchSiteItems(query) {
