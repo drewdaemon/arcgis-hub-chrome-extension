@@ -1,9 +1,9 @@
 import { h } from 'preact';
 import './site-listing.scss';
 
-const SiteListing = ({children, site}) => {
+const SiteListing = ({children, site, selected}) => {
   return (
-    <div class='result-item'>
+    <div class={'result-item' + (selected ? ' selected' : '')} >
       <div class='body-container'>
           <div class='body-title'>
             <a href={site.url} target='_blank'>{site.title}</a>
