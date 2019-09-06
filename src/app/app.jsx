@@ -32,7 +32,7 @@ class App extends Component {
   render(props, state) {
     return (
       <div class='app-container'>
-        {state.loading && <Loader />}
+        {state.loading && <Loader fullScreen='true' />}
         {state.loggedIn ? (
           <InitiativesList />
         ) : (

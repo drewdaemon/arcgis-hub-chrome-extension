@@ -1,6 +1,7 @@
 import { h, Component } from 'preact';
 import Factory from '../../services';
 import SiteListing from './site-listing/site-listing';
+import Loader from '../loader/loader';
 
 import './initiatives-list.scss';
 
@@ -12,7 +13,12 @@ class InitiativesList extends Component {
 
   constructor () {
     super();
-    this.state = { searchStr: '', selectedSiteIndex: 0, resultsObj: null };
+    this.state = {
+      searchStr: '',
+      selectedSiteIndex: 0,
+      resultsObj: null,
+      isLoading: false
+    };
     this.searchSiteItems = this.searchSiteItems.bind(this);
     this.onInput = this.onInput.bind(this);
     this.handleKeyEvent = this.handleKeyEvent.bind(this);
@@ -43,11 +49,13 @@ class InitiativesList extends Component {
   }
 
   searchSiteItems(query) {
+    this.setState({isLoading: true});
     return Factory.itemService.searchSiteItems(query)
         .then(resultsObj =>
           this.setState({
             resultsObj,
-            selectedSiteIndex: 0
+            selectedSiteIndex: 0,
+            isLoading: false
           }));
   }
 
@@ -57,18 +65,19 @@ class InitiativesList extends Component {
     return this.searchSiteItems(value);
   }
 
-  render(props, { searchStr, selectedSiteIndex, resultsObj }) {
+  render(props, { searchStr, selectedSiteIndex, resultsObj, isLoading }) {
     return (
       <div>
         <h1>Hub Sites</h1>
         <input type='text' placeholder='Search'
           ref={input => this.searchField = input} value={searchStr} onInput={this.onInput}></input>
-          {resultsObj &&
+          {resultsObj && !isLoading &&
             <div class='scroll-box'>
                 {resultsObj.results.map((item, i) =>
                   <SiteListing site={item} selected={i === selectedSiteIndex} />)}
             </div>
           }
+          {isLoading && <Loader />}
       </div>
     );
   }
